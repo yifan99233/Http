@@ -80,6 +80,7 @@ class Httpself():
 
 
 
+
     def test_code(self):
         m = self.post.status_code
         if m == 200:
