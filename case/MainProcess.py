@@ -146,15 +146,14 @@ class Mprocess(object):
         if caid == '' :
             for x in range(1,time+1):
                 RCaidInforData = {'name': '', 'page': x , 'leader': -1}
-                self.Lhttp.Post(api=RCaidInforUrl, header=self.header, cookie=self.cookie, data=RCaidInforData)
-                caid = self.r.json()["msg"]["list"]
+
+                caid = self.Lhttp.test_msg(self.Lhttp.Post(api=RCaidInforUrl, header=self.header, cookie=self.cookie, data=RCaidInforData))["list"]
                 for i in range(10):
                     Caid = caid[i]['CA_Id']
                     AccountInforData = {'aid': Caid}
                     self.Lhttp.Post(api=AccountInforUrl, header=self.header, cookie=self.cookie,data=AccountInforData)
                     RPassData = {'aid': Caid, 'goodNote': '', 'badNote': '', 'isVisa': 0, 'splPrty': 0}
-                    self.Lhttp.Post(api=RPassUrl, data=RPassData, header=self.header, cookie=self.cookie)
-                    if self.r.json()['msg'] == '操作成功':
+                    if self.Lhttp.test_msg(self.Lhttp.Post(api=RPassUrl, data=RPassData, header=self.header, cookie=self.cookie)) == '操作成功':
                         print('%s该流水号修片师组长已审核'%Caid)
                     else:
                         print('审核失败')
@@ -178,7 +177,6 @@ class Mprocess(object):
             for x in range(1,time+1):
                 RCaidInforData = {'type': 3, 'key': '' , 'state': 'all' , 'page':x}
                 caid = self.Lhttp.test_msg(self.Lhttp.Post(api=RCaidInforurl, header=self.header, cookie=self.cookie, data=RCaidInforData))["list"]
-                print(caid[0]['aid'])
                 for i in range(10):
                     Caid = caid[i]['aid']
                     RPassData = 'score=5&comment=456&aid=%s'%Caid
@@ -186,7 +184,7 @@ class Mprocess(object):
                     AccountInforData = {'aid': Caid , 'isAgreeShare' : 1 }
                     m = self.Lhttp.test_msg(self.Lhttp.Post(api=AccountInforUrl, header=self.header, cookie=self.cookie,data=AccountInforData))
                     self.Lhttp.Post(api=pj, data=RPassData, header=self.header, cookie=self.cookie)
-                    if m == '微信通知未发送,该用户未关注微信公众号或已取消关注':
+                    if m == '微信通知未发送,该用户未关注微信公众号或已取消关注' or m == '微信通知将在稍后发送':
                         print(Caid+'该流水号看片师已审核')
                     else:
                         print(Caid+'看片师审核失败')
@@ -197,7 +195,7 @@ class Mprocess(object):
             AccountInforData = {'aid': Caid, 'isAgreeShare': 1}
             m = self.Lhttp.test_msg(self.Lhttp.Post(url=AccountInforUrl, header=self.header, cookie=self.cookie, data=AccountInforData))['msg']
             self.Lhttp.Post(api=pj, data=RPassData, header=self.header, cookie=self.cookie)
-            if m == '微信通知未发送,该用户未关注微信公众号或已取消关注':
+            if m == '微信通知未发送,该用户未关注微信公众号或已取消关注' or m == '微信通知将在稍后发送':
                 print(Caid + '该流水号看片师已审核')
             else:
                 print(Caid + '看片师审核失败')
@@ -206,13 +204,12 @@ class Mprocess(object):
 
 url = 'http://qyfh.ops.hzmantu.com'
 Lapi = '/User/checkLogin'
-Ldata = {'user':'xps','pass':123}
-
+Ldata = {'user':'kps','pass':123}
 c = Mprocess(url = url , Lapi = Lapi , Ldata = Ldata)
-
+c.kpsReview()
 
 #c.HistoryPhotographer()
 #c.SysUpload(aid = 2019012518399152)
-c.XpsUpload()
+#c.XpsUpload()
 
 
