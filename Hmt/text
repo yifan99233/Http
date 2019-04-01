@@ -1,0 +1,49 @@
+{'pid': 10, 'pname': '文艺照-闺蜜', 'count': 2, 'sku': '', 'discount': 0, 'price': '359.00', 'oriPrice': '359.00'}
+{'pid': 27, 'pname': '文艺照-亲子', 'count': 2, 'sku': '', 'discount': 0, 'price': '359.00', 'oriPrice': '359.00'}
+{'pid': 168, 'pname': '形象套餐-形象套餐-半身照', 'count': 1, 'sku': '', 'discount': 0, 'price': '459.00', 'oriPrice': '459.00'}
+{'pid': 158, 'pname': '结婚照-结婚纪念照', 'count': 2, 'sku': '', 'discount': 0, 'price': '359.00', 'oriPrice': '359.00'}
+{'pid': 15, 'pname': '全家福', 'count': 3, 'sku': '', 'discount': 0, 'price': '499.00', 'oriPrice': '499.00'}
+1134 2019032662336687 创建成功
+1134 2019032656777858 创建成功
+1134 2019032680212937 创建成功
+1134 2019032674880565 创建成功
+1134 2019032639258379 创建成功
+
+
+PEP 8: expected 2 blank lines, found 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+标题 9xo7wlbu
+摄影配置 [{'name': 'ug85x', 'score': 16}, {'name': 'iu5pl', 'score': 5}, {'name': 'pxlqm', 'score': 5}, {'name': 'hwvxp', 'score': 74}]
+化妆配置 [{'name': '6n8kf', 'score': 100}]
+修片配置 [{'name': 'ck6un', 'score': 100}]
+{'success': True, 'msg': {'spot_check_num': 5, 'real_spot_check': 5}}
+
+
+
+
+
+
+
+
+
+
